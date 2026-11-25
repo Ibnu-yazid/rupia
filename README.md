@@ -1,6 +1,6 @@
 # RUPIA (Laravel)
 
-Aplikasi pencatatan keuangan pribadi RUPIA yang dibangun dengan Laravel 12, PHP 8.2+, dan MySQL/MariaDB.
+Aplikasi pencatatan keuangan pribadi RUPIA 
 
 ## Fitur
 
