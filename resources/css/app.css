@@ -1,0 +1,736 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+}
+
+/* =================================
+   RUPIA DESIGN SYSTEM (SAGE & NAVY)
+================================= */
+
+:root {
+    --rupia-bg: #f4f5f1;
+    --rupia-white: #ffffff;
+    --rupia-navy: #202c3b;
+    --rupia-sidebar: #1b2634;
+    --rupia-sidebar-hover: rgba(255, 255, 255, 0.08);
+    --rupia-sidebar-active: rgba(120, 155, 131, 0.22);
+    --rupia-text: #293541;
+    --rupia-muted: #7c8690;
+    --rupia-green: #789b83;
+    --rupia-green-dark: #5f826a;
+    --rupia-green-soft: #edf4ef;
+    --rupia-red: #c77e70;
+    --rupia-red-dark: #b36759;
+    --rupia-red-soft: #faefec;
+    --rupia-blue: #718ba7;
+    --rupia-blue-soft: #eef3f8;
+    --rupia-amber: #c6965c;
+    --rupia-amber-soft: #fbf4ea;
+    --rupia-border: #e6eae4;
+    --rupia-shadow-sm: 0 4px 15px rgba(32, 44, 59, 0.03);
+    --rupia-shadow-md: 0 10px 25px rgba(32, 44, 59, 0.07);
+}
+
+body.rupia-body {
+    min-height: 100vh;
+    background-color: var(--rupia-bg);
+    color: var(--rupia-text);
+    font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Sidebar */
+.rupia-sidebar {
+    width: 248px;
+    background: linear-gradient(180deg, #1d2938 0%, #17212d 100%);
+    position: fixed;
+    inset: 0 auto 0 0;
+    padding: 26px 16px;
+    z-index: 1000;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rupia-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+
+.rupia-brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(120, 155, 131, 0.22);
+    color: #a6c7b0;
+    font-size: 1.05rem;
+}
+
+.rupia-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #a7b3c2;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 11px 15px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.rupia-nav .nav-link i {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.rupia-nav .nav-link:hover {
+    color: #ffffff;
+    background: var(--rupia-sidebar-hover);
+    transform: translateX(2px);
+}
+
+.rupia-nav .nav-link.active {
+    color: #ffffff;
+    font-weight: 600;
+    background: var(--rupia-sidebar-active);
+    box-shadow: inset 3px 0 0 #8cb398;
+}
+
+/* Main & Topbar */
+.rupia-page {
+    margin-left: 248px;
+    min-height: 100vh;
+}
+
+.rupia-auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(120, 155, 131, 0.14), transparent 35%),
+        radial-gradient(circle at 15% 85%, rgba(113, 139, 167, 0.12), transparent 35%),
+        var(--rupia-bg);
+}
+
+.rupia-topbar {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 15px 28px;
+    border-bottom: 1px solid var(--rupia-border);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.rupia-page-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--rupia-navy);
+    letter-spacing: -0.015em;
+}
+
+.rupia-user-chip {
+    background: #f5f7f4;
+    border: 1px solid var(--rupia-border);
+    color: var(--rupia-navy);
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.rupia-content {
+    padding: 28px;
+}
+
+/* Alerts */
+.rupia-alert-success {
+    background-color: var(--rupia-green-soft);
+    border: 1px solid #c9decF;
+    color: #2d5139;
+    border-radius: 12px;
+}
+
+.rupia-alert-danger {
+    background-color: var(--rupia-red-soft);
+    border: 1px solid #ecc6be;
+    color: #7c3528;
+    border-radius: 12px;
+}
+
+/* Shared Cards & Section Headers */
+.rupia-card {
+    background: var(--rupia-white);
+    border: 1px solid var(--rupia-border);
+    border-radius: 13px;
+    box-shadow: var(--rupia-shadow-sm);
+}
+
+.rupia-section-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    background:
+        radial-gradient(circle at 92% 20%, rgba(120, 155, 131, 0.12), transparent 32%),
+        linear-gradient(120deg, #ffffff, #f8faf6);
+    border: 1px solid var(--rupia-border);
+    border-radius: 13px;
+}
+
+.rupia-eyebrow {
+    display: block;
+    color: #748f7c;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.rupia-section-banner h2 {
+    font-size: 1.35rem;
+    font-weight: 750;
+    color: var(--rupia-navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.rupia-section-banner p {
+    color: var(--rupia-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.rupia-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rupia-navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 0;
+}
+
+/* Forms */
+.rupia-card .form-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--rupia-navy);
+    margin-bottom: 6px;
+}
+
+.rupia-card .form-control,
+.rupia-card .form-select {
+    border-color: #dce2da;
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-size: 0.9rem;
+    color: var(--rupia-text);
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rupia-card .form-control:focus,
+.rupia-card .form-select:focus {
+    border-color: var(--rupia-green);
+    box-shadow: 0 0 0 3px rgba(120, 155, 131, 0.16);
+}
+
+/* Buttons & Badges */
+.btn-rupia-primary {
+    background-color: var(--rupia-navy);
+    border-color: var(--rupia-navy);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 9px;
+    padding: 9px 16px;
+}
+
+.btn-rupia-primary:hover {
+    background-color: #161f2b;
+    border-color: #161f2b;
+    color: #ffffff;
+}
+
+.btn-rupia-success {
+    background-color: var(--rupia-green);
+    border-color: var(--rupia-green);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 9px;
+    padding: 9px 16px;
+}
+
+.btn-rupia-success:hover {
+    background-color: var(--rupia-green-dark);
+    border-color: var(--rupia-green-dark);
+    color: #ffffff;
+}
+
+.btn-rupia-outline {
+    border: 1px solid #d6ddd3;
+    background: #ffffff;
+    color: var(--rupia-navy);
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+.btn-rupia-outline:hover {
+    background: #f5f7f4;
+    border-color: #c2cbc0;
+    color: var(--rupia-navy);
+}
+
+.btn-rupia-danger-outline {
+    border: 1px solid #ecc9c2;
+    background: #fff9f8;
+    color: var(--rupia-red-dark);
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+.btn-rupia-danger-outline:hover {
+    background: var(--rupia-red);
+    border-color: var(--rupia-red);
+    color: #ffffff;
+}
+
+.badge-rupia-income {
+    background-color: var(--rupia-green-soft);
+    color: #3d664b;
+    border: 1px solid #cde0d3;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+.badge-rupia-expense {
+    background-color: var(--rupia-red-soft);
+    color: #8f4335;
+    border: 1px solid #f0cdc6;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+/* Tables & Empty States */
+.rupia-table {
+    margin-bottom: 0;
+}
+
+.rupia-table thead th {
+    background-color: #f8faf7;
+    color: #636e79;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-top: 1px solid var(--rupia-border);
+    border-bottom: 1px solid var(--rupia-border);
+    padding: 12px 14px;
+}
+
+.rupia-table tbody td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #eff2ed;
+    color: var(--rupia-text);
+    font-size: 0.9rem;
+}
+
+.rupia-table tbody tr:hover td {
+    background-color: #fafcf9;
+}
+
+.rupia-empty-state {
+    padding: 36px 20px;
+    text-align: center;
+    color: var(--rupia-muted);
+}
+
+.rupia-empty-state i {
+    font-size: 1.75rem;
+    color: #9aa79e;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* =================================
+   RUPIA PERSONAL FINANCE DASHBOARD
+================================= */
+
+.rupia-dashboard {
+    min-height: 80vh;
+    padding-bottom: 16px;
+}
+
+.dashboard-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 30px;
+    margin-bottom: 24px;
+    background:
+        radial-gradient(circle at 90% 20%,
+        rgba(120, 155, 131, 0.13), transparent 30%),
+        linear-gradient(120deg, #ffffff, #f8faf6);
+    border: 1px solid var(--rupia-border);
+    border-radius: 13px;
+}
+
+.welcome-label {
+    display: block;
+    color: #819687;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+}
+
+.dashboard-welcome h2 {
+    font-size: clamp(20px, 2.5vw, 27px);
+    font-weight: 700;
+    letter-spacing: -0.7px;
+    margin-bottom: 8px;
+    color: var(--rupia-navy);
+}
+
+.dashboard-welcome p {
+    color: var(--rupia-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.welcome-date {
+    background: white;
+    border: 1px solid var(--rupia-border);
+    padding: 13px 19px;
+    border-radius: 9px;
+    min-width: 125px;
+}
+
+.welcome-date span,
+.welcome-date strong {
+    display: block;
+}
+
+.welcome-date span {
+    color: var(--rupia-muted);
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.welcome-date strong {
+    color: var(--rupia-navy);
+    font-size: 14px;
+}
+
+.finance-card {
+    position: relative;
+    overflow: hidden;
+    padding: 23px;
+    min-height: 190px;
+    border-radius: 11px;
+    color: white;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.finance-card::after {
+    content: "";
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    right: -40px;
+    bottom: -65px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0.035),
+                0 0 0 36px rgba(255, 255, 255, 0.025);
+}
+
+.finance-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(30, 45, 55, 0.12);
+}
+
+.income-card {
+    background: linear-gradient(135deg, #789b83, #668b74);
+}
+
+.expense-card {
+    background: linear-gradient(135deg, #c98274, #b96e63);
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #718ba7, #607b98);
+}
+
+.finance-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.finance-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    opacity: 0.85;
+}
+
+.finance-icon {
+    width: 36px;
+    height: 36px;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.17);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.finance-indicator {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 9px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 5px;
+}
+
+.finance-card h3 {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(19px, 2vw, 25px);
+    font-weight: 750;
+    margin: 17px 0 5px;
+    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+}
+
+.finance-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 11px;
+    opacity: 0.82;
+    margin: 0;
+}
+
+.dashboard-panel {
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--rupia-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(30, 40, 50, 0.025);
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.panel-heading h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--rupia-navy);
+    margin-bottom: 5px;
+}
+
+.panel-heading p {
+    color: var(--rupia-muted);
+    font-size: 12px;
+    margin: 0;
+}
+
+.panel-heading-icon {
+    display: flex;
+    width: 39px;
+    height: 39px;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f0;
+    color: #789b83;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.quick-access-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    border: 1px solid var(--rupia-border);
+    border-radius: 9px;
+    text-decoration: none;
+    color: var(--rupia-text);
+    background: #fff;
+    transition: all 0.22s ease;
+}
+
+.quick-access-item:hover {
+    border-color: #b7caba;
+    background: #fafcf9;
+    color: var(--rupia-text);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 40, 50, 0.05);
+}
+
+.quick-icon {
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+.transaction-icon {
+    background: #edf4ef;
+    color: #668b74;
+}
+
+.category-icon {
+    background: #f4efeb;
+    color: #b18168;
+}
+
+.quick-access-item strong,
+.quick-access-item span {
+    display: block;
+}
+
+.quick-access-item strong {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.quick-access-item span {
+    color: var(--rupia-muted);
+    font-size: 11px;
+}
+
+.quick-arrow {
+    margin-left: auto;
+    color: #a0aaa4;
+    font-size: 16px;
+}
+
+.dashboard-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    color: #929b96;
+    font-size: 11px;
+}
+
+.dashboard-footer i {
+    color: #789b83;
+    font-size: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rupia-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 14px;
+    }
+
+    .rupia-brand {
+        margin-bottom: 12px;
+    }
+
+    .rupia-nav {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .rupia-nav .nav-link {
+        padding: 8px 12px;
+        margin-bottom: 0;
+        font-size: 0.85rem;
+    }
+
+    .rupia-page {
+        margin-left: 0;
+    }
+
+    .rupia-topbar {
+        padding: 12px 16px;
+    }
+
+    .rupia-content {
+        padding: 16px;
+    }
+
+    .rupia-section-banner,
+    .dashboard-welcome {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .welcome-date {
+        width: 100%;
+    }
+
+    .quick-access-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panel {
+        padding: 19px;
+    }
+
+    .finance-card {
+        min-height: 165px;
+    }
+}
+
+@media (max-width: 400px) {
+    .finance-card {
+        padding: 18px;
+    }
+
+    .finance-card h3 {
+        font-size: 19px;
+    }
+}
